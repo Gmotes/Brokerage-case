@@ -26,7 +26,8 @@ public class CheckAndBlockAssetBalanceFn implements Function<OrderRequestDTO, Bo
 
   @Override
   public Boolean apply(final OrderRequestDTO orderRequestDTO) {
-    final Asset asset = assetService.findByCustomerIdAndAssetName(orderRequestDTO.getCustomerId(), orderRequestDTO.getAssetName());
+    final Asset asset =
+        assetService.findByCustomerIdAndAssetName(orderRequestDTO.getCustomerId(), orderRequestDTO.getAssetName());
     if (asset != null) {
       if (asset.getUsableSize().compareTo(orderRequestDTO.getSize()) >= 0) {
         BlockAsset blockAsset = new BlockAsset();
@@ -35,11 +36,12 @@ public class CheckAndBlockAssetBalanceFn implements Function<OrderRequestDTO, Bo
         blockAsset.setSize(orderRequestDTO.getSize());
         blockAssetBalanceCns.accept(blockAsset);
         return true;
+      } else {
+        return false;
       }
     } else {
       return false;
     }
-    return true;
   }
 }
 

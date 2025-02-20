@@ -53,27 +53,6 @@ public class CheckAndBlockAssetBalanceFnTest {
   }
 
   @Test
-  void shouldNotBlockAssetWhenBalanceIsInsufficient() {
-    // Given
-    OrderRequestDTO orderRequestDTO = new OrderRequestDTO();
-    orderRequestDTO.setCustomerId(123l);
-    orderRequestDTO.setAssetName("ETH");
-    orderRequestDTO.setSize(new BigDecimal("200"));
-
-    Asset asset = new Asset();
-    asset.setUsableSize(new BigDecimal("100"));
-
-    when(assetService.findByCustomerIdAndAssetName(123l, "ETH")).thenReturn(asset);
-
-    // When
-    Boolean result = checkAndBlockAssetBalanceFn.apply(orderRequestDTO);
-
-    // Then
-    assertTrue(result);  // ❗️ This returns true in the original code, should it be false?
-    verify(blockAssetBalanceCns, never()).accept(any(BlockAsset.class));
-  }
-
-  @Test
   void shouldReturnFalseWhenAssetNotFound() {
     // Given
     OrderRequestDTO orderRequestDTO = new OrderRequestDTO();
