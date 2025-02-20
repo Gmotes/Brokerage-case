@@ -1,0 +1,18 @@
+app:
+  custom:
+    env: "prod"
+spring:
+  h2:
+    console.enabled: true
+  datasource:
+    url: jdbc:h2:mem:brokerage_prod
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /v3/swagger-ui.html

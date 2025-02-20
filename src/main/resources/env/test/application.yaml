@@ -1,0 +1,29 @@
+app:
+  custom:
+    env: "test"
+    jwt:
+      secret : demo
+      expiration : 3600000
+spring:
+  h2:
+    console:
+      enabled : true
+  datasource:
+    initialization-mode : always
+    url: jdbc:h2:mem:brokerage_test
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /v3/swagger-ui.html
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
