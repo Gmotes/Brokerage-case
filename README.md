@@ -5,6 +5,13 @@
 This is case study that simulates a brokerage company provides basic services like order create(buy,sell,deposit,withdraw),list,delete(cancel) and asset listing.
 It is working on H2 database and starts with running sql located in resources directory. (init.sql)
 
+Access to h2 database and password is located application.yaml.
+```
+http://localhost:8080/h2-console
+```
+
+![API Screenshot](files/h2_database.png "H2 dataase")
+
 Swagger documentation is available for test environment via this url.
 
 ```
